@@ -1,6 +1,13 @@
+/*
+ * @Author: shulu
+ * @Date: 2024-07-16 22:59:55
+ * @LastEditors: shulu
+ * @LastEditTime: 2024-07-16 23:06:44
+ * @Description: file content
+ * @FilePath: \JustJava\helloworld\helloworld\src\main\java\com\helloworld\HelloController.java
+ */
 package com.helloworld;
 
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -8,12 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.Data;
+
 @RestController
 public class HelloController {
     @Autowired
     NamedParameterJdbcTemplate jdbcTemplate;
 
-    @RequestMapping("/")
+    @RequestMapping("/hello")
     String hello() {
         return "Hello World!";
     }
