@@ -2,9 +2,9 @@
  * @Author: shulu
  * @Date: 2024-07-16 22:59:55
  * @LastEditors: shulu
- * @LastEditTime: 2024-07-16 23:06:44
+ * @LastEditTime: 2024-08-06 11:27:59
  * @Description: file content
- * @FilePath: \JustJava\helloworld\helloworld\src\main\java\com\helloworld\HelloController.java
+ * @FilePath: \helloworld\helloworld\src\main\java\com\helloworld\HelloController.java
  */
 package com.helloworld;
 
@@ -22,7 +22,7 @@ public class HelloController {
     @Autowired
     NamedParameterJdbcTemplate jdbcTemplate;
 
-    @RequestMapping("/hello")
+    @RequestMapping("/")
     String hello() {
         return "Hello World!";
     }

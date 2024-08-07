@@ -1,18 +1,20 @@
 package com.helloworld;
 
-import com.jayway.restassured.RestAssured;
+import static org.hamcrest.CoreMatchers.is;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.core.env.Environment;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.jayway.restassured.RestAssured;
 import static com.jayway.restassured.RestAssured.given;
 import static com.jayway.restassured.RestAssured.when;
-import static org.hamcrest.CoreMatchers.is;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = App.class)
@@ -26,6 +28,31 @@ public class HelloControllerTest {
     @Before
     public void setUp() throws Exception {
         RestAssured.port = port;
+    }
+
+    @Value("${user}")
+    private String user;
+
+    @Test
+    public void testUsername() throws Exception {
+        System.out.println("username:" + user);
+        System.out.println("port:" + port);
+    }
+
+    @Value("${city}")
+    private String city;
+
+    @Test
+    public void testCity() {
+        System.out.println("city:" + city);
+    }
+
+    @Autowired
+    private Environment environment;
+
+    @Test
+    public void testEnvironment() {
+        System.out.println("environment:"+environment.getProperty("user.username"));
     }
 
     @Test

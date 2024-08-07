@@ -1,0 +1,5 @@
+# See http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+db:
+  url: mysql://127.0.0.1:3306/db1
+  user: dev
+  password: 123456
