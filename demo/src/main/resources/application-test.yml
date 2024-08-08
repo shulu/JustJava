@@ -1,0 +1,4 @@
+db:
+    url: mysql://db1
+    user: test
+    password: 123

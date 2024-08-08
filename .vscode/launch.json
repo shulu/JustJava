@@ -2,6 +2,18 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DemoApplication",
+            "request": "launch",
+            "mainClass": "com.demo.DemoApplication"
+        },
+        {
+            "type": "java",
+            "name": "HelloApplication",
+            "request": "launch",
+            "mainClass": "com.hello.hello.HelloApplication"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-App<helloworld>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
