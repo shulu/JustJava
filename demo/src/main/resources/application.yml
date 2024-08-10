@@ -9,3 +9,5 @@ spring:
             enabled: true
             additional-paths: src/main/java
             exclude: static/**
+server:
+    port: 8081

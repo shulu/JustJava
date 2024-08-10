@@ -1,0 +1,41 @@
+<!--
+ * @Author: shulu
+ * @Date: 2024-08-10 17:11:08
+ * @LastEditors: shulu
+ * @LastEditTime: 2024-08-10 17:17:13
+ * @Description: file content
+ * @FilePath: \JustJava\demo\src\main\resources\static\index.html
+-->
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="jquery-3.7.1.js"></script>
+        <script>
+            function getMsg() {
+                $.ajax({
+                    url: 'http://127.0.0.1:8080/test/getMsg',
+                    type: 'get',
+                    success: function (msg) {
+                        alert(msg);
+                    },
+                });
+            }
+            function delMsg() {
+                $.ajax({
+                    url: 'http://127.0.0.1:8080/test/delMsg',
+                    type: 'delete',
+                    success: function (msg) {
+                        alert(msg);
+                    },
+                });
+            }
+        </script>
+        <title>Document</title>
+    </head>
+    <body>
+        <input type="button" value="获取信息" onclick="getMsg()" />
+        <input type="button" value="删除信息" onclick="delMsg()" />
+    </body>
+</html>

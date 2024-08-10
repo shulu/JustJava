@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "RestfulApplication",
+            "request": "launch",
+            "mainClass": "com.restful.RestfulApplication",
+            "projectName": "restful"
+        },
+        {
+            "type": "java",
             "name": "DemoApplication",
             "request": "launch",
             "mainClass": "com.demo.DemoApplication"
