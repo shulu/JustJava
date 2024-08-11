@@ -1,0 +1,23 @@
+<!--
+ * @Author: shulu
+ * @Date: 2024-08-11 19:05:48
+ * @LastEditors: shulu
+ * @LastEditTime: 2024-08-11 19:06:54
+ * @Description: file content
+ * @FilePath: \JustJava\restful\src\main\resources\templates\upload.html
+-->
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Upload</title>
+    </head>
+    <body>
+        <h1>Upload</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="uploadFile" id="upload" value="choose file" />
+            <input type="submit" value="Upload" />
+        </form>
+    </body>
+</html>
