@@ -4,6 +4,9 @@ spring:
     application:
         name: restful
     thymeleaf:
+        cache:  false
+        encoding: utf-8
+        mode: html5
         prefix: classpath:/templates/
         suffix: .html
     servlet:
