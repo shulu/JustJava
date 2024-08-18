@@ -4,9 +4,9 @@ spring:
     application:
         name: restful
     thymeleaf:
-        cache:  false
+        cache: false
         encoding: utf-8
-        mode: html5
+        mode: HTML
         prefix: classpath:/templates/
         suffix: .html
     servlet:
@@ -16,3 +16,9 @@ spring:
             max-file-size: 2MB
             max-request-size: 10MB
             file-size-threshold: 0B
+    mvc:
+        pathmatch:
+            matching-strategy: ANT_PATH_MATCHER
+springdoc:
+    swagger-ui:
+        path: /swagger-ui.html
