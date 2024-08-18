@@ -13,6 +13,32 @@ import jakarta.servlet.http.HttpServletRequest;
 @RestController
 public class FileUploadController {
 
+    @PostMapping("/uploads")
+    public String upload(@RequestParam("uploadFiles") MultipartFile[] uploadFiles, HttpServletRequest request) {
+        // TODO: process POST request
+        if (uploadFiles == null || uploadFiles.length == 0) {
+            return "NULL FILE";
+        }
+        // 获取上传目标绝对文件夹路径
+        String realPath = request.getServletContext().getRealPath("/uploadFile");
+        File parentDir = new File(realPath);
+        if (!parentDir.isDirectory()) {
+            parentDir.mkdir();
+        }
+        for (MultipartFile uploadFile : uploadFiles) {
+            String filename = uploadFile.getOriginalFilename();
+            File target = new File(parentDir, filename);
+            try {
+                uploadFile.transferTo(target);
+                System.out.println(target.getAbsolutePath());
+            } catch (IOException e) {
+                // TODO: handle exception
+                e.printStackTrace();
+            }
+        }
+        return "SUCCESS";
+    }
+
     @PostMapping("/upload")
     public String upload(@RequestParam("uploadFile") MultipartFile uploadFile, HttpServletRequest request) {
         // TODO: process POST request

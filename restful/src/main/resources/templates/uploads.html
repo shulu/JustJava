@@ -1,0 +1,26 @@
+<!--
+ * @Author: shulu
+ * @Date: 2024-08-11 19:05:48
+ * @LastEditors: shulu
+ * @LastEditTime: 2024-08-18 19:47:13
+ * @Description: file content
+ * @FilePath: \JustJava\restful\src\main\resources\templates\uploads.html
+-->
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Upload</title>
+    </head>
+    <body>
+        <h1>Uploads</h1>
+        <form action="/uploads" method="post" enctype="multipart/form-data">
+            <div>
+                <span>多文件</span>
+                <input type="file" name="uploadFiles" id="uploads" value="choose file" multiple />
+            </div>
+            <input type="submit" value="Uploads" />
+        </form>
+    </body>
+</html>

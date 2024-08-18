@@ -2,7 +2,7 @@
  * @Author: shulu
  * @Date: 2024-08-11 19:05:48
  * @LastEditors: shulu
- * @LastEditTime: 2024-08-11 19:06:54
+ * @LastEditTime: 2024-08-18 19:47:20
  * @Description: file content
  * @FilePath: \JustJava\restful\src\main\resources\templates\upload.html
 -->
@@ -16,7 +16,10 @@
     <body>
         <h1>Upload</h1>
         <form action="/upload" method="post" enctype="multipart/form-data">
-            <input type="file" name="uploadFile" id="upload" value="choose file" />
+            <div>
+                <span>单文件</span>
+                <input type="file" name="uploadFile" id="upload" value="choose file" />
+            </div>
             <input type="submit" value="Upload" />
         </form>
     </body>
