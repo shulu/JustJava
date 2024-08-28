@@ -25,11 +25,9 @@ spring:
         password: 123456
         driver-class-name: com.mysql.cj.jdbc.Driver
     jpa:
-        properties:
-            hibernate:
-                hbm2ddl:
-                    auto: update
-                dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        hibernate:
+            ddl-auto: update
+            dialect: org.hibernate.dialect.MySQL5Dialect
         show-sql: true
 springdoc:
     swagger-ui:

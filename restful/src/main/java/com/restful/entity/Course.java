@@ -1,12 +1,19 @@
+/*
+ * @Author: shulu
+ * @Date: 2024-08-28 21:47:31
+ * @LastEditors: shulu
+ * @LastEditTime: 2024-08-28 22:55:05
+ * @Description: file content
+ * @FilePath: \restful\src\main\java\com\restful\entity\Course.java
+ */
 package com.restful.entity;
-
-import java.beans.Transient;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
