@@ -2,17 +2,9 @@
  * @Author: shulu
  * @Date: 2024-08-08 22:01:25
  * @LastEditors: shulu
- * @LastEditTime: 2024-08-18 23:19:01
+ * @LastEditTime: 2024-08-28 20:40:43
  * @Description: file content
- * @FilePath: \JustJava\restful\src\main\java\com\restful\RestfulApplication.java
- */
-/*
- * @Author: shulu
- * @Date: 2024-08-08 22:01:25
- * @LastEditors: shulu
- * @LastEditTime: 2024-08-18 19:15:50
- * @Description: file content
- * @FilePath: \JustJava\restful\src\main\java\com\restful\RestfulApplication.java
+ * @FilePath: \restful\src\main\java\com\restful\RestfulApplication.java
  */
 package com.restful;
 

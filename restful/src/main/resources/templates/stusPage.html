@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Title</title>
+    </head>
+    <body>
+        <a th:href="@{/addStudent}">添加学生</a><br />
+        <table border="1" align="center">
+            <tr>
+                <td>学号</td>
+                <td>姓名</td>
+                <td>性别</td>
+                <td>年龄</td>
+                <!-- <td>班级</td>-->
+                <td>修改</td>
+                <td>删除</td>
+            </tr>
+        </table>
+        <div>
+            <a th:if="${not page.isFirst()}" th:href="@{/findAll3(start=${page.number-1})}">上一页</a>
+            |总页数：<span th:text="${page.getTotalPages()}"></span>&nbsp; |当前页：<span th:text="${page.getNumber()+1}"></span> |总记录数：<span
+                th:text="${page.getTotalElements()}"
+            ></span
+            >&nbsp; |当前页记录数：<span th:text="${page.getNumberOfElements()}"></span>
+            <a th:if="${not page.isLast()}" th:href="@{/findAll3(start=${page.number+1})}">下一页</a>
+        </div>
+    </body>
+</html>

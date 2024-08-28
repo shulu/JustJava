@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息列表</title>
+</head>
+<body>
+<a th:href="@{/addStudent}">添加学生</a>
+
+<div>
+    <form action="/searchStudents" method="get">
+        姓名：<input type="text" name="studentname" /><br/>
+        性别：<input type="text" name="gender"/><br/>
+        <input type="submit" value="搜索"/>
+    </form>
+</div>
+<br/>
+<table border="1" align="center">
+    <tr>
+        <td>学号</td>
+        <td>姓名</td>
+        <td>性别</td>
+        <td>年龄</td>
+        <td>班级</td>
+        <td>借书证号</td>
+        <td>可借本数</td>
+        <td>修改</td>
+        <td>删除</td>
+
+    </tr>
+<tr th:each="student:${students}">
+    <td th:text="${student.id}"></td>
+    <td th:text="${student.studentname}"></td>
+    <td th:text="${student.gender}"></td>
+    <td th:text="${student.age}"></td>
+    <td th:text="${student.classes.id}"></td>
+    <td th:text="${student.libraryCard.id}"></td>
+    <td th:text="${student.libraryCard.creditNum}"></td>
+    <td><a th:href="@{/updateStudent(id=${student.id})}">修改</a></td>
+    <td><a th:href="@{/deleteStudent/(id=${student.id})}">删除</a></td>
+</tr>
+
+</table>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 align="center">修改课程</h1>
+<form th:action="@{/updateCourse}" method="post">
+<table align="center">
+    <tr><td>课程编号</td><td ><input type="text" name="courseid" th:value="${course.courseid}" readonly="readonly"/></td></tr>
+    <tr><td>课程名称</td><td><input type="text" name="coursename" th:value="${course.coursename}"/></td></tr>
+    <tr><td>课程学分</td><td><input type="text" name="coursescore" th:value="${course.coursescore}"/></td></tr>
+    <tr><td>课程学时</td><td><input type="text" name="coursetime" th:value="${course.coursetime}"/></td></tr>
+    <tr><td>课程类型</td><td><input type="text" name="coursetype" th:value="${course.coursetype}"/></td></tr>
+    <tr><td colspan="2" align="center"><input type="submit" value="修改"/></td></tr>
+</table>
+</form>
+</body>
+</html>

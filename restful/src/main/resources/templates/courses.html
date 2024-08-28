@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息列表</title>
+</head>
+<body>
+<a th:href="@{/addCourse}">添加课程</a>
+<table border="1" align="center">
+    <tr>
+        <td>课程编号</td>
+        <td>课程名称</td>
+        <td>课程学分</td>
+        <td>课程学时</td>
+        <td>课程类型</td>
+        <td>详情</td>
+        <td>修改</td>
+        <td>删除</td>
+
+    </tr>
+<tr th:each="course:${courses}">
+    <td th:text="${course.courseid}"></td>
+    <td th:text="${course.coursename}"></td>
+    <td th:text="${course.coursescore}"></td>
+    <td th:text="${course.coursetime}"></td>
+    <td th:text="${course.coursetype}"></td>
+<!--    <td><a th:href="@{/findById(courseid=${course.courseid})}">详情</a></td>-->
+    <td><a th:href="@{/findById/}+${course.courseid}">详情</a></td>
+    <td><a th:href="@{/updateCourse/}+${course.courseid}">修改</a></td>
+    <td><a th:href="@{/deleteCourse/}+${course.courseid}">删除</a></td>
+</tr>
+
+</table>
+</body>
+</html>

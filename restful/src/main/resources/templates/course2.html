@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>课程详情</h1>
+<table border="1" align="center">
+    <tr><td>课程编号</td><td th:text="${course.courseid}"></td></tr>
+    <tr><td>课程名称</td><td th:text="${course.coursename}"></td></tr>
+    <tr><td>课程学分</td><td th:text="${course.coursescore}"></td></tr>
+    <tr><td>课程学时</td><td th:text="${course.coursetime}"></td></tr>
+    <tr><td>课程类型</td><td th:text="${course.coursetype}"></td></tr>
+    <tr><td>选修学生</td><td>
+        <table align="center">
+            <tr><td>学号</td><td>姓名</td><td>性别</td><td>年龄</td></tr>
+            <tr th:each="student:${course.studentList}">
+                <td th:text="${student.id}"></td>
+                <td th:text="${student.studentname}"></td>
+                <td th:text="${student.gender}"></td>
+                <td th:text="${student.age}"></td>
+            </tr>
+        </table>
+            </td></tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 align="center">添加课程</h1>
+<form th:action="@{/addCourse}" method="post">
+<table align="center">
+    <tr><td>课程名称</td><td><input type="text" name="coursename"/></td></tr>
+    <tr><td>课程学分</td><td><input type="text" name="coursescore"/></td></tr>
+    <tr><td>课程学时</td><td><input type="text" name="coursetime"/></td></tr>
+    <tr><td>课程类型</td><td><input type="text" name="coursetype"/></td></tr>
+    <tr><td colspan="2" align="center"><input type="submit" value="添加"/></td></tr>
+</table>
+</form>
+</body>
+</html>

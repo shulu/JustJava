@@ -11,13 +11,23 @@
     <tr><td>姓名</td><td th:text="${student.studentname}"></td></tr>
     <tr><td>性别</td><td th:text="${student.gender}"></td></tr>
     <tr><td>年龄</td><td th:text="${student.age}"></td></tr>
-<!--    <tr><td>班级</td><td th:text="${student.classes.id}"></td></tr>-->
-    <tr><td>借书证信息</td><td>
+    <tr><td>班级信息</td><td>
         <table>
-            <tr><td>借书证号</td><td th:text="${student.libraryCard.id}"></td></tr>
-            <tr><td>可借本数</td><td th:text="${student.libraryCard.creditNum}"></td></tr>
+            <tr>
+                <td>班级编号</td><td th:text="${student.classes.id}"></td>
+            </tr>
+            <tr>
+               <td>班级名称</td><td th:text="${student.classes.classname}"></td>
+            </tr>
+            <tr>
+                <td>所在课室</td><td th:text="${student.classes.address}"></td>
+            </tr>
+
         </table>
+
     </td></tr>
+
+
 </table>
 
 </body>
