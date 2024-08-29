@@ -46,4 +46,24 @@ public class CourseService {
     public void deleteCourse(int courseid) {
         courseDao.deleteById(courseid);
     }
+
+    public List<Course> findByCoursescoreAndCoursetype(int coursescore, String coursetype) {
+        return courseDao.findByCoursescoreAndCoursetype(coursescore, coursetype);
+    }
+
+    public List<Course> findByCoursescoreOrCoursetype(int coursescore, String coursetype) {
+        return courseDao.findByCoursescoreOrCourseType(coursescore, coursetype);
+    }
+
+    public List<Course> findByCoursetimeBetween(int start, int end) {
+        return courseDao.findByCoursetimeBetween(start, end);
+    }
+
+    public List<Course> findByCoursetimeLessThan(int coursetime) {
+        return courseDao.findByCoursetimeLessThan(coursetime);
+    }
+
+    public List<Course> findByCoursenameContains(String coursename) {
+        return courseDao.findByCoursenameContains(coursename);
+    }
 }

@@ -46,7 +46,7 @@ public class CourseController {
         // TODO: process POST request
         ModelAndView mv = new ModelAndView();
         courseService.addCourse(course);
-        mv.setViewName("redirect:/findAll");
+        mv.setViewName("redirect:/findAll1");
         return mv;
     }
 
@@ -59,7 +59,7 @@ public class CourseController {
     public ModelAndView deleteCourse(@PathVariable("id") int courseid) {
         ModelAndView mv = new ModelAndView();
         courseService.deleteCourse(courseid);
-        mv.setViewName("redirect:findAll");
+        mv.setViewName("redirect:findAll1");
         return mv;
     }
 
@@ -88,7 +88,7 @@ public class CourseController {
         Pageable pageable = PageRequest.of(start, size, Sort.by(Sort.Direction.DESC, "courseid"));
         Page<Course> page = courseService.findAll(pageable);
         mv.addObject("page", page);
-        mv.setViewName("course");
+        mv.setViewName("coursePage");
         return mv;
     }
 
@@ -98,6 +98,54 @@ public class CourseController {
         Course course = courseService.findById(courseid);
         mv.addObject("course", course);
         mv.setViewName("course");
+        return mv;
+    }
+
+    @GetMapping("/findByCoursescoreAndCoursetype/{coursescore}/{coursetype}")
+    public ModelAndView findByCoursescoreAndCoursetype(@PathVariable("coursescore") int coursescore,
+            @PathVariable("coursetype") String coursetype) {
+        ModelAndView mv = new ModelAndView();
+        List<Course> courses = courseService.findByCoursescoreAndCoursetype(coursescore, coursetype);
+        mv.addObject("courses", courses);
+        mv.setViewName("courses");
+        return mv;
+    }
+
+    @GetMapping("/findByCoursescoreOrCoursetype/{coursescore}/{coursetype}")
+    public ModelAndView findByCoursescoreOrCoursetype(@PathVariable("coursescore") int coursescore,
+            @PathVariable("coursetype") String coursetype) {
+        ModelAndView mv = new ModelAndView();
+        List<Course> courses = courseService.findByCoursescoreOrCoursetype(coursescore, coursetype);
+        mv.addObject("courses", courses);
+        mv.setViewName("courses");
+        return mv;
+    }
+
+    @GetMapping("/findByCoursetimeBetween/{start}/{end}")
+    public ModelAndView findByCoursetimeBetween(@PathVariable("start") int start,
+            @PathVariable("end") int end) {
+        ModelAndView mv = new ModelAndView();
+        List<Course> courses = courseService.findByCoursetimeBetween(start, end);
+        mv.addObject("courses", courses);
+        mv.setViewName("courses");
+        return mv;
+    }
+
+    @GetMapping("/findByCoursetimeLessThan/{coursetime}")
+    public ModelAndView findByCoursetimeLessThan(@PathVariable("coursetime") int coursetime) {
+        ModelAndView mv = new ModelAndView();
+        List<Course> courses = courseService.findByCoursetimeLessThan(coursetime);
+        mv.addObject("courses", courses);
+        mv.setViewName("courses");
+        return mv;
+    }
+
+    @GetMapping("/findByCoursenameContains/{coursename}")
+    public ModelAndView findByCoursenameContains(@PathVariable("coursename") String coursename) {
+        ModelAndView mv = new ModelAndView();
+        List<Course> courses = courseService.findByCoursenameContains(coursename);
+        mv.addObject("courses", courses);
+        mv.setViewName("courses");
         return mv;
     }
 
