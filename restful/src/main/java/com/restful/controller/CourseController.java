@@ -29,7 +29,7 @@ public class CourseController {
         Course course = courseService.findById(courseid);
         mv.addObject("course", course);
         mv.setViewName("updateCourse");
-        return new ModelAndView();
+        return mv;
     }
 
     @PostMapping("/updateCourse")
@@ -59,7 +59,7 @@ public class CourseController {
     public ModelAndView deleteCourse(@PathVariable("id") int courseid) {
         ModelAndView mv = new ModelAndView();
         courseService.deleteCourse(courseid);
-        mv.setViewName("redirct:findAll");
+        mv.setViewName("redirect:findAll");
         return mv;
     }
 
@@ -69,7 +69,7 @@ public class CourseController {
         List<Course> courselist = courseService.findAll();
         mv.addObject("courses", courselist);
         mv.setViewName("courses");
-        return new ModelAndView();
+        return mv;
     }
 
     @GetMapping("/findAll2")
@@ -78,14 +78,14 @@ public class CourseController {
         List<Course> courselist = courseService.findAll(Sort.by(Sort.Direction.DESC, "coursescore"));
         mv.addObject("courses", courselist);
         mv.setViewName("courses");
-        return new ModelAndView();
+        return mv;
     }
 
     @GetMapping("/findAll3")
     public ModelAndView findAll(@RequestParam(value = "start", defaultValue = "0") Integer start,
             @RequestParam(value = "size", defaultValue = "3") Integer size) {
         ModelAndView mv = new ModelAndView();
-        Pageable pageable = PageRequest.of(start, size, Sort.by(Sort.Direction.DESC, "sourseid"));
+        Pageable pageable = PageRequest.of(start, size, Sort.by(Sort.Direction.DESC, "courseid"));
         Page<Course> page = courseService.findAll(pageable);
         mv.addObject("page", page);
         mv.setViewName("course");

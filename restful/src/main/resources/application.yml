@@ -3,6 +3,12 @@ server:
 spring:
     application:
         name: restful
+    devtools:
+        livereload:
+            enabled: true
+        remote:
+            restart:
+                enabled: true
     thymeleaf:
         cache: false
         encoding: utf-8
