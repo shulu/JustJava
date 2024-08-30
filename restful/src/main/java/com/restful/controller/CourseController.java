@@ -37,7 +37,7 @@ public class CourseController {
         // TODO: process POST request
         ModelAndView mv = new ModelAndView();
         courseService.updateCourse(course);
-        mv.setViewName("redirect:findAll");
+        mv.setViewName("redirect:findAll1");
         return mv;
     }
 
@@ -144,6 +144,52 @@ public class CourseController {
     public ModelAndView findByCoursenameContains(@PathVariable("coursename") String coursename) {
         ModelAndView mv = new ModelAndView();
         List<Course> courses = courseService.findByCoursenameContains(coursename);
+        mv.addObject("courses", courses);
+        mv.setViewName("courses");
+        return mv;
+    }
+
+    @GetMapping("/selectCourses1/{coursescore}")
+    public ModelAndView selectCourse1(@PathVariable("coursescore") int coursescore) {
+        ModelAndView mv = new ModelAndView();
+        List<Course> courses = courseService.selectCourses1(coursescore);
+        mv.addObject("courses", courses);
+        mv.setViewName("courses");
+        return mv;
+    }
+
+    @GetMapping("/selectCourses2/{coursescore}/{coursetime}")
+    public ModelAndView selectCourse2(@PathVariable("coursescore") int coursescore,
+            @PathVariable("coursetime") int coursetime) {
+        ModelAndView mv = new ModelAndView();
+        List<Course> courses = courseService.selectCourses2(coursescore, coursetime);
+        mv.addObject("courses", courses);
+        mv.setViewName("courses");
+        return mv;
+    }
+
+    @GetMapping("/selectCourses3/{coursescore}")
+    public ModelAndView selectCourse3(@PathVariable("coursescore") int coursescore) {
+        ModelAndView mv = new ModelAndView();
+        List<Course> courses = courseService.selectCourses3(coursescore);
+        mv.addObject("courses", courses);
+        mv.setViewName("courses");
+        return mv;
+    }
+
+    @GetMapping("/selectCourses4/{coursescore}")
+    public ModelAndView selectCourse4(@PathVariable("coursescore") int coursescore) {
+        ModelAndView mv = new ModelAndView();
+        List<Course> courses = courseService.selectCourses4(coursescore);
+        mv.addObject("courses", courses);
+        mv.setViewName("courses");
+        return mv;
+    }
+
+    @GetMapping("/selectCourses5/{coursename}")
+    public ModelAndView selectCourse5(@PathVariable("coursename") String coursename) {
+        ModelAndView mv = new ModelAndView();
+        List<Course> courses = courseService.selectCourses5(coursename);
         mv.addObject("courses", courses);
         mv.setViewName("courses");
         return mv;

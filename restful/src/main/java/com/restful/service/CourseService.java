@@ -52,7 +52,7 @@ public class CourseService {
     }
 
     public List<Course> findByCoursescoreOrCoursetype(int coursescore, String coursetype) {
-        return courseDao.findByCoursescoreOrCourseType(coursescore, coursetype);
+        return courseDao.findByCoursescoreOrCoursetype(coursescore, coursetype);
     }
 
     public List<Course> findByCoursetimeBetween(int start, int end) {
@@ -66,4 +66,30 @@ public class CourseService {
     public List<Course> findByCoursenameContains(String coursename) {
         return courseDao.findByCoursenameContains(coursename);
     }
+
+    public List<Course> selectCourses1(int coursescore) {
+        return courseDao.selectCourses1(coursescore);
+    }
+
+    public List<Course> selectCourses2(int coursescore, int coursetime) {
+        return courseDao.selectCourses2(coursescore, coursetime);
+    }
+
+    public List<Course> selectCourses3(int coursescore) {
+        return courseDao.selectCourses3(coursescore);
+    }
+
+    public List<Course> selectCourses4(int coursescore) {
+        return courseDao.selectCourses4(coursescore);
+    }
+
+    public List<Course> selectCourses5(String coursename) {
+        return courseDao.selectCourses5(coursename);
+    }
+
+    public void updateCourse(String coursename, int coursescore, int coursetime, String coursetype,
+            int courseid) {
+        courseDao.updateCourse(coursename, coursescore, coursetime, coursetype, courseid);
+    }
+
 }

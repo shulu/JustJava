@@ -2,7 +2,7 @@
  * @Author: shulu
  * @Date: 2024-08-27 21:46:56
  * @LastEditors: shulu
- * @LastEditTime: 2024-08-28 21:15:51
+ * @LastEditTime: 2024-08-30 18:22:14
  * @Description: file content
  * @FilePath: \restful\src\main\java\com\restful\controller\StudentController.java
  */
@@ -40,7 +40,7 @@ public class StudentController {
         List<Student> stus = studentService.findAllStudents();
         ModelAndView mv = new ModelAndView();
         mv.addObject("stus", stus);
-        mv.setViewName("STUS");
+        mv.setViewName("stus");
         return mv;
     }
 
@@ -49,6 +49,7 @@ public class StudentController {
         Student student = studentService.findStudentById(id);
         ModelAndView mv = new ModelAndView();
         mv.addObject("student", student);
+        System.out.println(student);
         mv.setViewName("student");
         return mv;
     }
@@ -103,6 +104,25 @@ public class StudentController {
         Page<Student> page = studentJPARepository.findAll(pageable);
         mv.addObject("page", page);
         mv.setViewName("stusPage");
+        return mv;
+    }
+
+    @GetMapping("/findStudentById/{id}")
+    public ModelAndView findStudentByIdJPA(@PathVariable("id") int id) {
+        Student student = studentService.findStudentByIdJPA(id);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("student", student);
+        mv.setViewName("student");
+        return mv;
+    }
+
+    @GetMapping("/findStudentClasses/{id}")
+    public ModelAndView findStudentClasses(@PathVariable("id") int id) {
+        ModelAndView mv = new ModelAndView();
+        Student student = studentService.findStudentByIdJPA(id);
+        System.out.println(student);
+        mv.addObject("student", student);
+        mv.setViewName("student");
         return mv;
     }
 

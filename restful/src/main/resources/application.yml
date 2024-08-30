@@ -30,10 +30,16 @@ spring:
         username: root
         password: 123456
         driver-class-name: com.mysql.cj.jdbc.Driver
+        hikari:
+            max-lifetime: 1800000 # 30 minutes
+            idle-timeout: 600000 # 10 minutes
+            connection-timeout: 30000 # 30 seconds
+            minimum-idle: 5
+            maximum-pool-size: 10
     jpa:
         hibernate:
             ddl-auto: update
-            dialect: org.hibernate.dialect.MySQL5Dialect
+            dialect: org.hibernate.dialect.MySQL8Dialect
         show-sql: true
 springdoc:
     swagger-ui:
