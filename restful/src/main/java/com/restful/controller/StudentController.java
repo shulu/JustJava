@@ -2,7 +2,7 @@
  * @Author: shulu
  * @Date: 2024-08-27 21:46:56
  * @LastEditors: shulu
- * @LastEditTime: 2024-08-30 18:22:14
+ * @LastEditTime: 2024-09-02 15:12:07
  * @Description: file content
  * @FilePath: \restful\src\main\java\com\restful\controller\StudentController.java
  */
@@ -122,8 +122,34 @@ public class StudentController {
         Student student = studentService.findStudentByIdJPA(id);
         System.out.println(student);
         mv.addObject("student", student);
-        mv.setViewName("student");
+        mv.setViewName("student2");
         return mv;
     }
 
+    @GetMapping("/findStudentCourse")
+    public ModelAndView findStudentCourse(int id) {
+        ModelAndView mv = new ModelAndView();
+        Student student = studentService.findStudentByIdJPA(id);
+        mv.addObject("student", student);
+        mv.setViewName("student3");
+        return mv;
+    }
+
+    @GetMapping("/searchStudents")
+    public ModelAndView searchStudents(Student student) {
+        ModelAndView mv = new ModelAndView();
+        List<Student> students = studentService.searchStudents(student);
+        mv.addObject("students", students);
+        mv.setViewName("students");
+        return mv;
+    }
+
+    @GetMapping("/findAllStudentsNew")
+    public ModelAndView findAllStudentsNew() {
+        ModelAndView mv = new ModelAndView();
+        List<Student> students = studentService.findAllStudentsJPA();
+        mv.addObject("students", students);
+        mv.setViewName("students");
+        return mv;
+    }
 }

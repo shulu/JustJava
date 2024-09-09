@@ -195,4 +195,13 @@ public class CourseController {
         return mv;
     }
 
+    @GetMapping("/findCourseStudent")
+    public ModelAndView findCourseStudent(int id) {
+        ModelAndView mv = new ModelAndView();
+        Course course = courseService.findById(id);
+        mv.addObject("course", course);
+        mv.setViewName("course2");
+        return mv;
+    }
+
 }
