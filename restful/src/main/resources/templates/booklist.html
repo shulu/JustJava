@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>图书信息列表</title>
+</head>
+<body>
+<a th:href="@{/addBook}">添加新书</a>
+<div>
+    <form action="/searchBooks" method="get">
+        图书名称：<input type="text" name="name"/><br/>
+        图书类别：<input type="text" name="category"/><br/>
+        图书作者：<input type="text" name="author"/><br/>
+        <input type="submit" value="搜索"/>
+    </form>
+</div>
+<br/><br/>
+<table border="1" align="center">
+    <tr>
+        <td>选择</td>
+        <td>编号</td>
+        <td>书名</td>
+        <td>价格</td>
+        <td>类目</td>
+        <td>库存</td>
+        <td>图片</td>
+        <td>说明</td>
+        <td>作者</td>
+        <td>已售</td>
+
+    </tr>
+    <tr th:each="book:${books}">
+        <td><input type="checkbox" class="ids" th:value="${book.id}"/></td>
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.name}"></td>
+        <td th:text="${book.price}"></td>
+        <td th:text="${book.category}"></td>
+        <td th:text="${book.pnum}"></td>
+        <td th:text="${book.imgurl}"></td>
+        <td th:text="${book.description}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.sales}"></td>
+    </tr>
+
+</table>
+<br/>
+<input type="button" value="删除所选" onclick="dels()"/>
+<script src="js/jquery-3.1.0.min.js"></script>
+<script>
+    function dels() {
+        if (confirm("你确定要删除所选吗")) {
+            var ids = "";
+            $(".ids").each(function (i, e) {
+                if ($(e).is(":checked")) {
+                    var id = $(e).val();
+                    ids += id + ",";
+                }
+            });
+
+            if (ids.length == 0) {
+                alert("请选择删除项！");
+            } else {
+                // alert(ids);
+                //去除最后一个,号
+                ids = ids.substr(0, ids.length - 1);
+                location.href = "deleteBooks?id=" + ids;//构造出类似deleteBooks?id=1,2,3这样的URL，后台可用数组接收
+            }
+        }
+    }
+</script>
+</body>
+</html>

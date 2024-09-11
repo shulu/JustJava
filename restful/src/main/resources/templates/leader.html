@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>员工信息</title>
+</head>
+<body>
+<h1>员工详细信息</h1>
+<table border="1" align="center">
+    <tr>
+        <td>编号</td>
+        <td>姓名</td>
+        <td>职位</td>
+        <td>工资</td>
+    </tr>
+<tr>
+        <td th:text="${employee.empno}"></td>
+        <td th:text="${employee.ename}"></td>
+        <td th:text="${employee.job}"></td>
+        <td th:text="${employee.salary}"></td>
+</tr>
+
+</table>
+
+<h3>该员工的有如下下属员工</h3>
+<table border="1" align="center">
+    <tr>
+        <td>编号</td>
+        <td>姓名</td>
+        <td>职位</td>
+        <td>工资</td>
+    </tr>
+    <tr th:each="emp:${employee.employees}">
+        <td th:text="${emp.empno}"></td>
+        <td th:text="${emp.ename}"></td>
+        <td th:text="${emp.job}"></td>
+        <td th:text="${emp.salary}"></td>
+    </tr>
+
+</table>
+
+</body>
+</html>

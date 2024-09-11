@@ -12,7 +12,7 @@ spring:
     thymeleaf:
         cache: false
         encoding: utf-8
-        mode: HTML
+        mode: HTML5
         prefix: classpath:/templates/
         suffix: .html
     servlet:
@@ -26,16 +26,18 @@ spring:
         pathmatch:
             matching-strategy: ANT_PATH_MATCHER
     datasource:
-        url: jdbc:mysql://localhost:3306/studentdb?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+        # 使用Druid链接数据池 默认使用Hikari
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
         username: root
         password: 123456
         driver-class-name: com.mysql.cj.jdbc.Driver
-        hikari:
-            max-lifetime: 1800000 # 30 minutes
-            idle-timeout: 600000 # 10 minutes
-            connection-timeout: 30000 # 30 seconds
-            minimum-idle: 5
-            maximum-pool-size: 10
+        # hikari:
+        #     max-lifetime: 1800000 # 30 minutes
+        #     idle-timeout: 600000 # 10 minutes
+        #     connection-timeout: 30000 # 30 seconds
+        #     minimum-idle: 5
+        #     maximum-pool-size: 10
     jpa:
         hibernate:
             ddl-auto: update
