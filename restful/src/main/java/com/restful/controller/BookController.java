@@ -7,8 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.restful.entity.Book;
 import com.restful.service.BookService;
 
@@ -76,4 +79,26 @@ public class BookController {
         mv.setViewName("redirect:/books");
         return mv;
     }
+
+    @GetMapping("/searchBooks")
+    public ModelAndView searchBooks(Book book) {
+        List<Book> books = bookService.searchBooks(book);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("books", books);
+        mv.setViewName("booklist");
+        return mv;
+    }
+
+    @GetMapping("/booksPage")
+    public ModelAndView booksPage(@RequestParam(value = "start", defaultValue = "1") int start,
+            @RequestParam(value = "size", defaultValue = "3") int size) {
+        PageHelper.startPage(start, size, "id asc");
+        List<Book> books = bookService.findAllBooks();
+        PageInfo<Book> page = new PageInfo<>(books);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("page", page);
+        mv.setViewName("bookslistPage");
+        return mv;
+    }
+
 }

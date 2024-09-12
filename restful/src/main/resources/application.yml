@@ -43,6 +43,18 @@ spring:
             ddl-auto: update
             dialect: org.hibernate.dialect.MySQL8Dialect
         show-sql: true
+mybatis:
+    type-aliases-package: com.restful.entity
+    mapper-locations:  classpath:mappers/*.xml
+pagehelper:
+    #指明当前查询的是MySQL数据库
+    helper-dialect: mysql
+    #启用合理化，当pageNum小于1时查询第1页，当pageNum大于页数时查询最后一页
+    reasonable: true
+    #是否自动分页，依据的是入参，如果参数中有pageNum，pageSize分页参数，则会自动分页
+    support-methods-arguments: true
+    #如果POJO或者Map中发现了countSql属性，就作为count参数使用
+    params: count=countSql
 springdoc:
     swagger-ui:
         path: /swagger-ui.html

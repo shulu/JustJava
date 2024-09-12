@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.restful.dao.StudentJPARepository;
 import com.restful.entity.Student;
 import com.restful.service.StudentService;
+import com.restful.service.StudentServiceMyBatis;
 
 @Controller
 public class StudentController {
@@ -34,6 +35,9 @@ public class StudentController {
 
     @Autowired
     private StudentJPARepository studentJPARepository;
+
+    @Autowired
+    private StudentServiceMyBatis studentServiceMyBatis;
 
     @GetMapping("/stus")
     public ModelAndView findAllStudents() {
@@ -152,4 +156,24 @@ public class StudentController {
         mv.setViewName("students");
         return mv;
     }
+
+    @GetMapping("/toupdatestudent/{id}")
+    public ModelAndView toUpdate(@PathVariable("id") int id) {
+        Student student = studentServiceMyBatis.findStudent(id);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("student", student);
+        mv.setViewName("updatestudentmb");
+        return mv;
+    }
+
+    @GetMapping("/updatestu")
+    public ModelAndView updateStudentMB(Student student) {
+        studentServiceMyBatis.updateStudent(student);
+        student = studentServiceMyBatis.findStudentById(student.getId());
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("student", student);
+        mv.setViewName("updatestudentmb");
+        return mv;
+    }
+
 }
