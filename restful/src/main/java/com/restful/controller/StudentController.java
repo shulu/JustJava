@@ -168,6 +168,7 @@ public class StudentController {
 
     @GetMapping("/updatestu")
     public ModelAndView updateStudentMB(Student student) {
+        System.out.println(student);
         studentServiceMyBatis.updateStudent(student);
         student = studentServiceMyBatis.findStudentById(student.getId());
         ModelAndView mv = new ModelAndView();

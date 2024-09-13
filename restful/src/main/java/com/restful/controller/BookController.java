@@ -101,4 +101,12 @@ public class BookController {
         return mv;
     }
 
+    @GetMapping("/deleteBooks")
+    public ModelAndView deletBooks(int[] id) {
+        bookService.deleteBooks(id);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("redirect:/books");
+        return mv;
+    }
+
 }

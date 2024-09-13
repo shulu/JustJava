@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.restful.repository.ClassinfoMapper">
+    <select id="findClassinfoById" resultMap="classMap">
+        select c.*,s.* from classinfo c, student s where c.classno = s.classno and c.classno = #{classno}
+    </select>
+
+    <resultMap id="classMap" type="classinfo">
+        <id property="classno" column="classno"/>
+        <result property="classname" column="classname" />
+        <collection property="students" column="classno" ofType="Student">
+            <id property="id" column="id"/>
+            <result property="studentname" column="studentname"/>
+            <result property="gender" column="gender"/>
+            <result property="age" column="age"/>
+        </collection>
+    </resultMap>
+</mapper>

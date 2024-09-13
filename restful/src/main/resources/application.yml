@@ -12,7 +12,7 @@ spring:
     thymeleaf:
         cache: false
         encoding: utf-8
-        mode: HTML5
+        mode: HTML
         prefix: classpath:/templates/
         suffix: .html
     servlet:
@@ -45,7 +45,7 @@ spring:
         show-sql: true
 mybatis:
     type-aliases-package: com.restful.entity
-    mapper-locations:  classpath:mappers/*.xml
+    mapper-locations: classpath:mappers/*.xml
 pagehelper:
     #指明当前查询的是MySQL数据库
     helper-dialect: mysql
