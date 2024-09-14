@@ -73,6 +73,7 @@ public class Student {
                         @JoinColumn(name = "course_id") })
         private List<Course> courseList;
 
+        @ManyToOne
         private Classinfo classinfo;
 
         public Student(String studentname, String gender, int age) {

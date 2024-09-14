@@ -32,12 +32,12 @@ spring:
         username: root
         password: 123456
         driver-class-name: com.mysql.cj.jdbc.Driver
-        # hikari:
-        #     max-lifetime: 1800000 # 30 minutes
-        #     idle-timeout: 600000 # 10 minutes
-        #     connection-timeout: 30000 # 30 seconds
-        #     minimum-idle: 5
-        #     maximum-pool-size: 10
+        hikari:
+            max-lifetime: 1800000 # 30 minutes
+            idle-timeout: 600000 # 10 minutes
+            connection-timeout: 30000 # 30 seconds
+            minimum-idle: 5
+            maximum-pool-size: 10
     jpa:
         hibernate:
             ddl-auto: update
@@ -55,6 +55,10 @@ pagehelper:
     support-methods-arguments: true
     #如果POJO或者Map中发现了countSql属性，就作为count参数使用
     params: count=countSql
+# logging:
+#     level:
+#         org.springframework: DEBUG
+#         org.hibernate: DEBUG
 springdoc:
     swagger-ui:
         path: /swagger-ui.html

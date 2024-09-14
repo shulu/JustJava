@@ -6,6 +6,19 @@
     <select id="findStudent" resultType="Student">
         select * from student where id = #{id}
     </select>
+    <select id="findStudentById" resultMap="studentMap">
+        select * from student,classinfo where student.classno=classinfo.classno and student.id = #{id}
+    </select>
+    <resultMap id="studentMap" type="Student">
+        <id property="id" column="id" />
+        <result property="studentname" column="studentname" />
+        <result property="gender" column="gender" />
+        <result property="age" column="age" />
+        <association property="classinfo" javaType="Classinfo" column="classinfo">
+            <id property="classno" column="classno"/>
+            <result property="classname" column="classname"/>
+        </association>
+    </resultMap>
     <update id="updateStudent" parameterType="Student">
         UPDATE student
         <trim prefix="set" suffixOverrides=",">

@@ -7,7 +7,7 @@
         select c.*,s.* from classinfo c, student s where c.classno = s.classno and c.classno = #{classno}
     </select>
 
-    <resultMap id="classMap" type="classinfo">
+    <resultMap id="classMap" type="Classinfo">
         <id property="classno" column="classno"/>
         <result property="classname" column="classname" />
         <collection property="students" column="classno" ofType="Student">

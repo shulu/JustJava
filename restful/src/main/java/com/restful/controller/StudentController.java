@@ -177,4 +177,14 @@ public class StudentController {
         return mv;
     }
 
+    @GetMapping("/student/{id}")
+    public ModelAndView findStudentByIdMB(@PathVariable("id") int id) {
+        Student student = studentServiceMyBatis.findStudentById(id);
+        System.out.println(student);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("student", student);
+        mv.setViewName("studentci");
+        return mv;
+    }
+
 }

@@ -19,7 +19,7 @@ public class StudentServiceImpl implements StudentServiceMyBatis {
 
     @Override
     public Student findStudentById(int id) {
-        return studentMapper.findStudent(id);
+        return studentMapper.findStudentById(id);
     }
 
     @Override

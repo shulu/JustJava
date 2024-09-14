@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>班级信息</h1>
+<table border="1" align="center">
+    <tr>
+        <td>班级编号:</td>
+        <td th:text="${classinfo.classno}"></td>
+    </tr>
+    <tr>
+        <td>班级名称:</td>
+        <td th:text="${classinfo.classname}"></td>
+    </tr>
+</table>
+<h3>该班级有下列学生</h3>
+<table border="1" width="300px" align="center">
+    <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>年龄</th>
+    </tr>
+    <tr th:each="student:${classinfo.students}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.studentname}"></td>
+        <td th:text="${student.gender}">
+        </td>
+        <td th:text="${student.age}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
