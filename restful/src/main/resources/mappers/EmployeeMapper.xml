@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.restful.repository.EmployeeMapper">
+    <select id="findEmployeeById" resultMap="employeeMap">
+        select * from employee where empno = #{empno}
+    </select>
+
+    <resultMap id="employeeMap" type="Employee">
+        <id property="empno" column="empno" />
+        <result property="ename" column="ename" />
+        <result property="job" column="job" />
+        <result property="salary" column="salary" />
+        <association property="leader" javaType="Employee" column="leaderid" select="findLeaderById"></association>
+    </resultMap>
+    <select id="findLeaderById" resultType="Employee">
+        select * from employee where empno = #{leaderid}
+    </select>
+
+    <select id="findLeaderAndEmps" resultMap="employeeMap2">
+        select * from employee where empno=#{empno}
+    </select>
+    <resultMap id="employeeMap2" type="Employee">
+        <id property="empno" column="empno"/>
+        <result property="ename" column="ename"/>
+        <result property="job" column="job"/>
+        <result property="salary" column="salary"/>
+        <collection property="employees" column="empno" ofType="Employee" select="findEmployeesById"></collection>
+    </resultMap>
+    <select id="findEmployeesById" resultType="Employee">
+        select * from employee where leaderid=#{leaderid}
+    </select>
+
+    <select id="findEmployeeSalarylevel" resultType="Employee">
+        select employee.*,level from employee,salarylevel where employee.salary between salarylevel.minsal and salarylevel.maxsal
+    </select>
+</mapper>
