@@ -5,7 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.restful.entity.Book;
+import com.restful.repository.BookBpMapper;
 import com.restful.repository.BookMapper;
 
 import jakarta.transaction.Transactional;
@@ -15,6 +19,9 @@ public class BookServiceImpl implements BookService {
 
     @Autowired
     private BookMapper bookMapper;
+
+    @Autowired
+    private BookBpMapper bookBpMapper;
 
     @Override
     public List<Book> findAllBooks() {
@@ -46,12 +53,25 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> searchBooks(Book book) {
-        return bookMapper.searchBooks(book);
+        // myBatis 用法
+        // return bookMapper.searchBooks(book);
+        // mybatisplus 用法
+        LambdaQueryWrapper<Book> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.like(book.getName() != "" && book.getName() != null, Book::getName, Book.getName());
+        queryWrapper.eq(book.getCategory() != "" && book.getCategory() != null, Book::getCategory, book.getCategory());
+        queryWrapper.eq(book.getAuthor() != "" && book.getAuthor() != null, Book::getAuthor, book.getAuthor());
+        return bookBpMapper.selectList(queryWrapper);
     }
 
     @Override
     @Transactional
     public void deleteBooks(int[] id) {
         bookMapper.deleteBooks(id);
+    }
+
+    public IPage<Book> getPage(int pageNum, int size) {
+        IPage<Book> bookPage = new Page<>(pageNum, size);
+        bookPage = bookBpMapper.selectPage(bookPage, null);
+        return bookPage;
     }
 }

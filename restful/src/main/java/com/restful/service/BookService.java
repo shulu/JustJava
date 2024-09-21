@@ -2,6 +2,7 @@ package com.restful.service;
 
 import java.util.List;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.restful.entity.Book;
 
 public interface BookService {
@@ -18,4 +19,6 @@ public interface BookService {
     public List<Book> searchBooks(Book book);
 
     public void deleteBooks(int[] id);
+
+    public IPage<Book> getPage(int pageNum, int size);
 }

@@ -28,7 +28,7 @@ spring:
     datasource:
         # 使用Druid链接数据池 默认使用Hikari
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+        url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=true
         username: root
         password: 123456
         driver-class-name: com.mysql.cj.jdbc.Driver
@@ -46,6 +46,28 @@ spring:
 mybatis:
     type-aliases-package: com.restful.entity
     mapper-locations: classpath:mappers/*.xml
+mybatis-plus:
+    # 扫描xml映射文件，多个目录用逗号或者分号分隔（告诉 Mapper所对应的 XML 文件位置）
+    mapper-locations: classpath:mappers/*.xml
+    # 实体类路径
+    type-aliases-package: com.restful.entity
+    # 以下配置均有默认值,可以不设置
+    global-config:
+        db-config:
+            #主键类型 AUTO:"数据库ID自增" INPUT:"用户输入ID",ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID”;
+            #配置了这个实体类可以省略注解@TableId
+            id-type: AUTO
+            #数据库表的前缀，配置后实体类可省略注解@TableName
+            table-prefix: tb_
+    configuration:
+        # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
+        map-underscore-to-camel-case: true
+        # 返回map时true:当查询数据为空时字段返回为null,false:不加这个查询数据为空时，字段将被隐藏
+        call-setters-on-nulls: true
+        # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+        # 是否开启缓存
+        cache-enabled: false
 pagehelper:
     #指明当前查询的是MySQL数据库
     helper-dialect: mysql
