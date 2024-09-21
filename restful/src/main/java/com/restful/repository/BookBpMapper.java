@@ -6,6 +6,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.restful.entity.Book;
 
 @Mapper
-public interface BookBpMapper extends BaseMapper<Book> {
+public interface BookbpMapper extends BaseMapper<Book> {
 
 }

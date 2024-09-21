@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>图书信息列表</title>
+</head>
+<body>
+<a th:href="@{/addBook}">添加新书</a>
+
+<table border="1" align="center">
+    <tr>
+        <td>编号</td>
+        <td>书名</td>
+        <td>库存</td>
+        <td>价格</td>
+        <td>类目</td>
+        <td>说明</td>
+        <td>图片</td>
+        <td>作者</td>
+        <td>已售</td>
+
+    </tr>
+<tr th:each="book:${page.records}">
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.name}"></td>
+        <td th:text="${book.pnum}"></td>
+        <td th:text="${book.price}"></td>
+        <td th:text="${book.category}"></td>
+        <td th:text="${book.description}"></td>
+        <td th:text="${book.imgurl}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.sales}"></td>
+</tr>
+
+</table>
+<br/>
+<div>
+    <a th:if="${page.current>1}" th:href="@{/booksPage(start=${page.current-1})}">上一页</a>
+    &nbsp;&nbsp;总页数：<span th:text="${page.getPages()}"></span>&nbsp;
+    &nbsp;&nbsp;当前页：<span th:text="${page.current}"></span>
+    &nbsp;&nbsp;总记录数：<span th:text="${page.total}"></span>&nbsp;
+    &nbsp;&nbsp;<a th:if="${page.current<page.getPages()}" th:href="@{/booksPage(start=${page.current+1})}">下一页</a>
+</div>
+</body>
+</html>
