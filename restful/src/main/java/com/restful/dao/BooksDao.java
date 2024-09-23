@@ -7,7 +7,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.restful.entity.Book;
 import com.restful.entity.Books;
 
 @Repository
@@ -25,16 +24,20 @@ public class BooksDao {
         return stringRedisTemplate.opsForValue().get(key);
     }
 
+    public List<Books> findBooks(String id) {
+        return (List<Books>) redisTemplate.opsForValue().get(id);
+    }
+
     public void saveBooks(Object key, List<Books> books) {
         redisTemplate.opsForValue().set(key, books);
     }
 
-    public Book findBookById(int id) {
-        return (Book) redisTemplate.opsForValue().get(String.valueOf(id));
+    public Books findBookById(int id) {
+        return (Books) redisTemplate.opsForValue().get(String.valueOf(id));
     }
 
-    public void saveBook(Book book) {
-        redisTemplate.opsForValue().set(String.valueOf(book.getId()), book);
+    public void saveBook(Books books) {
+        redisTemplate.opsForValue().set(String.valueOf(books.getId()), books);
     }
 
     public void deleteBook(int id) {
