@@ -13,7 +13,7 @@ import com.restful.entity.Books;
 public class BooksDao {
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<Object, Object> redisTemplate;
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
