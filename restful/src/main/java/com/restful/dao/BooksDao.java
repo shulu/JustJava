@@ -14,6 +14,8 @@ public class BooksDao {
 
     @Autowired
     private RedisTemplate redisTemplate;
+
+    @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
     public void setValue(String key, String value) {
