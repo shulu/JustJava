@@ -1,0 +1,4 @@
+autoc\config\RegisterAutoConfiguration.class
+autoc\config\RegisterProperties.class
+autoc\service\RegisterService.class
+autoc\App.class

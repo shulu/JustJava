@@ -1,0 +1,2 @@
+com.springframework.boot.autoconfigure.EnableAutoConfiguration = \
+autoc.config.RegisterAutoConfiguration
